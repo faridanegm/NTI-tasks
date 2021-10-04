@@ -1,1 +1,29 @@
+session 2 Task a 
+-----------------------
 
+$old_character = 'a';
+$new_character = ++$old_character; 
+
+if (strlen($new_character) > 1) 
+{
+ $new_character = $new_character[0];
+ }
+echo $new_character;
+--------------------------------
+task b:
+--------------
+<?php
+$students = array (
+  array("root",20,0),
+  array("root2",25,3.4),
+  array("root3",30,0),
+  
+);
+  
+echo $students[0][0].": age: ".$students[0][1].", gpa : ".$students[0][2].".<br>";
+echo $students[1][0].": age: ".$students[1][1].", gpa: ".$students[1][2].".<br>";
+echo $students[2][0].": age: ".$students[2][1].", gpa: ".$students[2][2].".<br>";
+
+?>
+
+<?php
