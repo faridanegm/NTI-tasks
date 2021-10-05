@@ -1,0 +1,94 @@
+<?php
+
+// part 2 , collection of data // check 
+  if($_SERVER['REQUEST_METHOD'] == "POST"){
+  echo  $_POST['name'].'<br>';
+  echo  $_POST['password'].'<br>';
+  echo  $_POST['email'].'<br>';
+  echo  $_POST['address'].'<br>';
+  echo  $_POST['gender'].'<br>';
+  echo  $_POST['url'].'<br>';
+  }
+
+// part 3, validation and error messages //
+$VAlstatus= "ok";
+$msg="";
+
+if (!isset($password) or strlen($password)<6 ){
+    $VAlstatus="not ok";
+    echo $msg=$msg."password must be more than 6 characters <br>";
+}
+if (!isset($address) or strlen($address)>10){
+    $VAlstatus="not ok";
+    echo $msg=$msg."address is too long, max lengh 10 char";
+}
+if (filter_var($email,FILTER_VALIDATE_EMAIL)){
+    $VAlstatus="not ok";
+    echo $msg=$msg."EMAIL NOT VALID <br>";
+}
+if (filter_var($url,FILTER_VALIDATE_URL)){
+    $VAlstatus="not ok";
+    echo $msg=$msg."url not found <br>";
+}
+
+
+?>
+<!-- part 1, the form  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Task 3 - register form </form></h2>
+  <form  action="<?php echo $_SERVER['PHP_SELF'];?>"   method="post"   enctype ="multipart/form-data">
+
+
+  <div>
+    <label for="exampleInputname1">Name</label>
+    <input type="text"  name="name"  placeholder="Enter Name" required>
+  </div>
+
+
+  <div>
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email"   name="email" placeholder="Enter email" required>
+  </div>
+
+  <div >
+    <label for="exampleInputPassword1"> Password</label>
+    <input type="password"   name = "password" placeholder="Password"required>
+  </div>
+ 
+  <div>
+    <label for="exampleInputaddress1">address</label>
+    <input type="address"   name = "address"  placeholder="address"required>
+  </div>
+
+  <div>
+      
+    <label >gender</label>
+    <input type="radio"   name = "gender"  placeholder="female">Female
+    <input type="radio"   name = "gender"  placeholder="male">male
+  </div>
+
+  <div>
+    <label for="exampleInputlink1"> url </label>
+    <input type="url"   name = "url"  placeholder="url"required>
+  </div>
+
+
+  <button type="submit" > Submit</button>
+
+</form>
+</div>
+
+</body>
+</html>
